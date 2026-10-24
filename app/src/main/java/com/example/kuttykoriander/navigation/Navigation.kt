@@ -24,6 +24,11 @@ fun LittleLemonNavGraph() {
                     navController.navigate("home") {
                         popUpTo("onboarding") { inclusive = true }
                     }
+                },
+                onBrowseMenu = {
+                    navController.navigate("home") {
+                        popUpTo("onboarding") { inclusive = true }
+                    }
                 }
             )
         }
@@ -31,6 +36,11 @@ fun LittleLemonNavGraph() {
             HomeScreen(
                 onProfileClick = {
                     navController.navigate("profile")
+                },
+                onTabSelected = { tab ->
+                    if (tab == "profile") {
+                        navController.navigate("profile")
+                    }
                 }
             )
         }
@@ -39,6 +49,13 @@ fun LittleLemonNavGraph() {
                 onLogOut = {
                     navController.navigate("onboarding") {
                         popUpTo("home") { inclusive = true }
+                    }
+                },
+                onTabSelected = { tab ->
+                    if (tab == "home") {
+                        navController.navigate("home") {
+                            popUpTo("profile") { inclusive = true }
+                        }
                     }
                 }
             )
